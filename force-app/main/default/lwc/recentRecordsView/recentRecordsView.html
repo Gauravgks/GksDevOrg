@@ -1,0 +1,57 @@
+<template>
+    <lightning-card>
+        <div class="combobox-container">
+            <lightning-combobox name="Object List" label="Objects" value={value} placeholder="Select Object"
+                options={options} onchange={handleChange}></lightning-combobox>
+        </div>
+
+        <template lwc:if={showFieldValues}>
+            <div class="slds-var-p-around_medium">
+                <h3 class="slds-text-heading_small slds-var-m-bottom_small">Display Fields:</h3>
+                <div class="slds-grid slds-wrap">
+                    <template for:each={displayValue} for:item="field">
+                        <div key={field}
+                            class="slds-var-p-around_xx-small slds-var-m-right_small slds-var-m-bottom_x-small ">
+                            {field}
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <lightning-button variant="success" label="Recent Records" title="Successful action" onclick={getRecords}
+                class="slds-var-m-left_x-small"></lightning-button>
+
+            <div class="slds-var-p-around_medium">
+                <template lwc:if={data.length}>
+                    <lightning-datatable key-field="Id" data={data} columns={columns} hide-checkbox-column
+                        onrowaction={handleRowAction}></lightning-datatable>
+                </template>
+            </div>
+        </template>
+        <div class="slds-var-p-bottom_large slds-var-p-left_large" style="width:800px">
+            <!-- <template lwc:if={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template> -->
+            <template lwc:if={showRecordData}>
+                <lightning-record-view-form record-id={selectedRecordId} object-api-name={selectedOject}
+                    density="compact">
+                    <lightning-output-field field-name="Name"></lightning-output-field>
+                    <lightning-output-field field-name="OwnerId"></lightning-output-field>
+                    <lightning-output-field field-name="CreatedById"></lightning-output-field>
+                    <lightning-output-field field-name="LastModifiedById"></lightning-output-field>
+                    <lightning-output-field field-name="CreatedDate"></lightning-output-field>
+                    <lightning-output-field field-name="LastModifiedDate"></lightning-output-field>
+                    <template lwc:if={isAccount}>
+                        <lightning-output-field field-name="Website"></lightning-output-field>
+                    </template>
+                    <template lwc:if={isContact}>
+                        <lightning-output-field field-name="MobilePhone"></lightning-output-field>
+                    </template>
+                    <template lwc:if={isOpportunity}>
+                        <lightning-output-field field-name="Amount"></lightning-output-field>
+                    </template>
+                </lightning-record-view-form>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>
