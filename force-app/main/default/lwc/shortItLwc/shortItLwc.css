@@ -1,0 +1,31 @@
+.card-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10), 0 1.5px 6px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem 3rem;
+    min-width: 500px;
+    max-width: 600px;
+    transition: box-shadow 0.2s;
+}
+
+.card-container:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.short-url-output {
+    font-size: 1.1rem;
+    color: #2d3748;
+    background: #f4f8ff;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    word-break: break-all;
+    box-shadow: 0 1px 4px rgba(94, 94, 236, 0.06);
+}
+
+@media (max-width: 700px) {
+    .card-container {
+        min-width: 90vw;
+        max-width: 98vw;
+        padding: 1.5rem 0.5rem;
+    }
+}
